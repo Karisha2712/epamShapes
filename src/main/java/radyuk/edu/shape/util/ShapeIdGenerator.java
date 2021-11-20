@@ -1,4 +1,4 @@
-package radyuk.edu.epam.shape.util;
+package radyuk.edu.shape.util;
 
 public final class ShapeIdGenerator {
     private static int counter;

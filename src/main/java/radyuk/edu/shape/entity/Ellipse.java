@@ -1,6 +1,6 @@
-package radyuk.edu.epam.shape.entity;
+package radyuk.edu.shape.entity;
 
-import radyuk.edu.epam.shape.util.ShapeIdGenerator;
+import radyuk.edu.shape.util.ShapeIdGenerator;
 
 public class Ellipse {
     private final int ellipseId;

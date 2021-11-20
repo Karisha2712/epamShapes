@@ -1,4 +1,4 @@
-package radyuk.edu.epam.shape.entity;
+package radyuk.edu.shape.entity;
 
 public record Point(float x, float y) {
 }
