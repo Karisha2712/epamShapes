@@ -48,4 +48,14 @@ public class Ellipse {
         result += 31 * result + secondPoint.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Ellipse{");
+        sb.append("ellipseId=").append(ellipseId);
+        sb.append(", firstPoint=").append(firstPoint);
+        sb.append(", secondPoint=").append(secondPoint);
+        sb.append('}');
+        return sb.toString();
+    }
 }
