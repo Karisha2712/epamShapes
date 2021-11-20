@@ -1,18 +1,19 @@
 package radyuk.edu.shape.service;
 
 import radyuk.edu.shape.entity.Ellipse;
+import radyuk.edu.shape.exception.EllipseException;
 
 public interface EllipseService {
-    boolean isEllipse(Ellipse ellipse);
+    boolean isEllipse(Ellipse ellipse) throws EllipseException;
 
-    boolean isCircle(Ellipse ellipse);
+    boolean isCircle(Ellipse ellipse) throws EllipseException;
 
-    boolean isEllipseValid(Ellipse ellipse);
+    boolean isEllipseValid(Ellipse ellipse) throws EllipseException;
 
-    boolean doesIntersectAxis(Ellipse ellipse, float distance);
+    boolean doesIntersectOneAxis(Ellipse ellipse, float distance) throws EllipseException;
 
-    double calculateArea(Ellipse ellipse);
+    double calculateArea(Ellipse ellipse) throws EllipseException;
 
-    double calculatePerimeter(Ellipse ellipse);
+    double calculatePerimeter(Ellipse ellipse) throws EllipseException;
 
 }
