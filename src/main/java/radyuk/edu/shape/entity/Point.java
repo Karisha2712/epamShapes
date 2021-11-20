@@ -1,4 +1,4 @@
 package radyuk.edu.shape.entity;
 
-public record Point(float x, float y) {
+public record Point(double x, double y) {
 }
