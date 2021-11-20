@@ -1,13 +1,18 @@
 package radyuk.edu.shape.entity;
 
+import radyuk.edu.shape.exception.EllipseException;
 import radyuk.edu.shape.util.ShapeIdGenerator;
+import radyuk.edu.shape.validator.EllipseParametersValidator;
 
 public class Ellipse {
     private final int ellipseId;
     private Point firstPoint;
     private Point secondPoint;
 
-    public Ellipse(Point firstPoint, Point secondPoint) {
+    public Ellipse(Point firstPoint, Point secondPoint) throws EllipseException {
+        if (!EllipseParametersValidator.areParametersValid(firstPoint, secondPoint)) {
+            throw new EllipseException("Invalid ellipse: points can't belong to a horizontal or vertical line");
+        }
         ellipseId = ShapeIdGenerator.generateId();
         this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
