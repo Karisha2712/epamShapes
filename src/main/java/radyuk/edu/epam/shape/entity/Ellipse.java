@@ -7,9 +7,9 @@ public class Ellipse {
     private Point firstPoint;
     private Point secondPoint;
 
-    public Ellipse(Point centrePoint, Point secondPoint) {
+    public Ellipse(Point firstPoint, Point secondPoint) {
         ellipseId = ShapeIdGenerator.generateId();
-        this.firstPoint = centrePoint;
+        this.firstPoint = firstPoint;
         this.secondPoint = secondPoint;
     }
 
