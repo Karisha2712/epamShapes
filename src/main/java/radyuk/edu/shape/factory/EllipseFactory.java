@@ -1,5 +1,8 @@
 package radyuk.edu.shape.factory;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import radyuk.edu.shape.entity.Ellipse;
 import radyuk.edu.shape.entity.Point;
 import radyuk.edu.shape.exception.EllipseException;
@@ -8,8 +11,9 @@ import java.util.List;
 
 
 public final class EllipseFactory {
-    public static final EllipseFactory instance = new EllipseFactory();
-    public static final int COORDINATES_NUMBER = 4;
+    private static final EllipseFactory instance = new EllipseFactory();
+    private static final int COORDINATES_NUMBER = 4;
+    private static final Logger logger = LogManager.getLogger();
 
     private EllipseFactory() {
 
@@ -21,6 +25,7 @@ public final class EllipseFactory {
         }
         Point firstPoint = new Point(pointsCoordinates.get(0), pointsCoordinates.get(1));
         Point secondPoint = new Point(pointsCoordinates.get(2), pointsCoordinates.get(3));
+        logger.log(Level.INFO, "Ellipse was created successfully");
         return new Ellipse(firstPoint, secondPoint);
     }
 

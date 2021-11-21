@@ -1,12 +1,16 @@
 package radyuk.edu.shape.service.impl;
 
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import radyuk.edu.shape.entity.Ellipse;
 import radyuk.edu.shape.entity.Point;
 import radyuk.edu.shape.exception.EllipseException;
 import radyuk.edu.shape.service.EllipseService;
 
 public class EllipseServiceImpl implements EllipseService {
-    public static final String ERROR_MESSAGE = "Invalid ellipse";
+    private static final String ERROR_MESSAGE = "Invalid ellipse";
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public boolean isEllipse(Ellipse ellipse) throws EllipseException {
@@ -16,6 +20,7 @@ public class EllipseServiceImpl implements EllipseService {
         double width = Math.abs(ellipse.getFirstPoint().x() - ellipse.getSecondPoint().x());
         double height = Math.abs(ellipse.getFirstPoint().y() - ellipse.getSecondPoint().y());
         boolean result = Double.compare(width, height) != 0;
+        logger.log(Level.INFO, "Ellipse is not circle: {}", result);
         return result && isEllipseValid(ellipse);
     }
 
@@ -27,6 +32,7 @@ public class EllipseServiceImpl implements EllipseService {
         double width = Math.abs(ellipse.getFirstPoint().x() - ellipse.getSecondPoint().x());
         double height = Math.abs(ellipse.getFirstPoint().y() - ellipse.getSecondPoint().y());
         boolean result = Double.compare(width, height) == 0;
+        logger.log(Level.INFO, "Ellipse is circle: {}", result);
         return result && isEllipseValid(ellipse);
     }
 
@@ -37,8 +43,10 @@ public class EllipseServiceImpl implements EllipseService {
         }
         Point firstPoint = ellipse.getFirstPoint();
         Point secondPoint = ellipse.getSecondPoint();
-        return firstPoint.x() != secondPoint.x()
+        boolean result = firstPoint.x() != secondPoint.x()
                 && firstPoint.y() != secondPoint.y();
+        logger.log(Level.INFO, "Ellipse is valid: {}", result);
+        return result;
     }
 
     @Override
@@ -52,8 +60,10 @@ public class EllipseServiceImpl implements EllipseService {
                 || (Double.compare(secondPoint.x(), distance) == 0);
         boolean doesIntersectYAxis = (Double.compare(firstPoint.y(), distance) == 0)
                 || (Double.compare(secondPoint.y(), distance) == 0);
-        return (doesIntersectXAxis && !doesIntersectYAxis)
+        boolean result = (doesIntersectXAxis && !doesIntersectYAxis)
                 || (!doesIntersectXAxis && doesIntersectYAxis);
+        logger.log(Level.INFO, "Ellipse intersect only one axis: {}", result);
+        return result;
     }
 
     @Override
@@ -63,7 +73,9 @@ public class EllipseServiceImpl implements EllipseService {
         }
         double a = Math.abs(ellipse.getFirstPoint().x() - ellipse.getSecondPoint().x()) / 2;
         double b = Math.abs(ellipse.getFirstPoint().y() - ellipse.getSecondPoint().y()) / 2;
-        return Math.PI * a * b;
+        double result = Math.PI * a * b;
+        logger.log(Level.INFO, "Calculated area: {}", result);
+        return result;
     }
 
     @Override
@@ -73,6 +85,8 @@ public class EllipseServiceImpl implements EllipseService {
         }
         double a = Math.abs(ellipse.getFirstPoint().x() - ellipse.getSecondPoint().x()) / 2;
         double b = Math.abs(ellipse.getFirstPoint().y() - ellipse.getSecondPoint().y()) / 2;
-        return 2 * Math.PI * Math.sqrt((a * a + b * b) / 2);
+        double result = 2 * Math.PI * Math.sqrt((a * a + b * b) / 2);
+        logger.log(Level.INFO, "Calculated perimeter: {}", result);
+        return result;
     }
 }
