@@ -15,10 +15,6 @@ import java.util.stream.Stream;
 public class EllipseFileReader {
     private static final String FILE_ERROR = "Invalid file path";
 
-    private EllipseFileReader() {
-
-    }
-
     public List<String> getValidEllipseLines(String filepath) throws EllipseException {
         if (!EllipseFileValidator.isFileValid(filepath)) {
             throw new EllipseException(FILE_ERROR);
