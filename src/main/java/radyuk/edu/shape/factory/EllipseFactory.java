@@ -29,7 +29,7 @@ public final class EllipseFactory {
         return new Ellipse(firstPoint, secondPoint);
     }
 
-    private EllipseFactory getInstance() {
+    public static EllipseFactory getInstance() {
         return instance;
     }
 }
