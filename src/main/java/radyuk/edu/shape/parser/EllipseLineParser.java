@@ -14,7 +14,7 @@ public class EllipseLineParser {
     private static final int COORDINATES_NUMBER = 4;
     private static final Logger logger = LogManager.getLogger();
 
-    public List<Double> parseEllipseLines(String ellipseLine) throws EllipseException {
+    public List<Double> parseEllipseLine(String ellipseLine) throws EllipseException {
         if (ellipseLine == null || ellipseLine.isEmpty()) {
             throw new EllipseException("Line is empty");
         }

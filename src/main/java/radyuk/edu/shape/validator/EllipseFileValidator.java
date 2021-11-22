@@ -12,6 +12,6 @@ public class EllipseFileValidator {
             return false;
         }
         File file = new File(filepath);
-        return file.exists() && file.length() != 0;
+        return file.exists() && (file.length() != 0);
     }
 }
