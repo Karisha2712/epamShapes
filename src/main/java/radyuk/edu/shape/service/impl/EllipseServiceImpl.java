@@ -50,23 +50,6 @@ public class EllipseServiceImpl implements EllipseService {
     }
 
     @Override
-    public boolean doesIntersectOneAxis(Ellipse ellipse, float distance) throws EllipseException {
-        if (ellipse == null) {
-            throw new EllipseException(ERROR_MESSAGE);
-        }
-        Point firstPoint = ellipse.getFirstPoint();
-        Point secondPoint = ellipse.getSecondPoint();
-        boolean doesIntersectXAxis = (Double.compare(firstPoint.x(), distance) == 0)
-                || (Double.compare(secondPoint.x(), distance) == 0);
-        boolean doesIntersectYAxis = (Double.compare(firstPoint.y(), distance) == 0)
-                || (Double.compare(secondPoint.y(), distance) == 0);
-        boolean result = (doesIntersectXAxis && !doesIntersectYAxis)
-                || (!doesIntersectXAxis && doesIntersectYAxis);
-        logger.log(Level.INFO, "Ellipse intersect only one axis: {}", result);
-        return result;
-    }
-
-    @Override
     public double calculateArea(Ellipse ellipse) throws EllipseException {
         if (ellipse == null) {
             throw new EllipseException(ERROR_MESSAGE);

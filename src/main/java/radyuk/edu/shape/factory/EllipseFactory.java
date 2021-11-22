@@ -25,8 +25,9 @@ public final class EllipseFactory {
         }
         Point firstPoint = new Point(pointsCoordinates.get(0), pointsCoordinates.get(1));
         Point secondPoint = new Point(pointsCoordinates.get(2), pointsCoordinates.get(3));
+        Ellipse ellipse = new Ellipse(firstPoint, secondPoint);
         logger.log(Level.INFO, "Ellipse was created successfully");
-        return new Ellipse(firstPoint, secondPoint);
+        return ellipse;
     }
 
     public static EllipseFactory getInstance() {

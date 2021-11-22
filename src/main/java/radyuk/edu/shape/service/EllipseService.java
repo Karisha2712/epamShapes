@@ -10,8 +10,6 @@ public interface EllipseService {
 
     boolean isEllipseValid(Ellipse ellipse) throws EllipseException;
 
-    boolean doesIntersectOneAxis(Ellipse ellipse, float distance) throws EllipseException;
-
     double calculateArea(Ellipse ellipse) throws EllipseException;
 
     double calculatePerimeter(Ellipse ellipse) throws EllipseException;
