@@ -1,8 +1,8 @@
 package edu.radyuk.shape.entity;
 
-import edu.radyuk.shape.util.ShapeIdGenerator;
-import edu.radyuk.shape.validator.EllipseParametersValidator;
 import edu.radyuk.shape.exception.EllipseException;
+import edu.radyuk.shape.util.ShapeIdGenerator;
+import edu.radyuk.shape.validator.impl.EllipseParametersValidatorImpl;
 
 public class Ellipse {
     private final int ellipseId;
@@ -10,7 +10,8 @@ public class Ellipse {
     private Point secondPoint;
 
     public Ellipse(Point firstPoint, Point secondPoint) throws EllipseException {
-        if (!EllipseParametersValidator.areParametersValid(firstPoint, secondPoint)) {
+        EllipseParametersValidatorImpl ellipseParametersValidator = new EllipseParametersValidatorImpl();
+        if (!ellipseParametersValidator.areParametersValid(firstPoint, secondPoint)) {
             throw new EllipseException("Invalid ellipse: points can't belong to a horizontal or vertical line");
         }
         ellipseId = ShapeIdGenerator.generateId();
