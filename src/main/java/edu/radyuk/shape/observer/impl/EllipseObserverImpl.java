@@ -24,7 +24,7 @@ public class EllipseObserverImpl implements EllipseObserver {
             double ellipsePerimeter = ellipseService.calculatePerimeter(ellipse);
             warehouse.updateParameters(ellipseId, ellipseArea, ellipsePerimeter);
         } catch (EllipseException e) {
-            logger.log(Level.ERROR, "Error while changing warehouse " + e);
+            logger.log(Level.ERROR, "Error while changing warehouse ", e);
         }
     }
 }
