@@ -6,6 +6,11 @@ public class EllipseParameters {
     private double area;
     private double perimeter;
 
+    public EllipseParameters(double area, double perimeter) {
+        this.area = area;
+        this.perimeter = perimeter;
+    }
+
     public double getArea() {
         return area;
     }
