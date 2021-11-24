@@ -1,11 +1,11 @@
 package edu.radyuk.shape.factory;
 
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import edu.radyuk.shape.entity.Ellipse;
 import edu.radyuk.shape.entity.Point;
 import edu.radyuk.shape.exception.EllipseException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public final class EllipseFactory {
     private static final Logger logger = LogManager.getLogger();
     private static final EllipseFactory instance = new EllipseFactory();
-    private static final int COORDINATES_NUMBER = 4;
+    public static final int COORDINATES_NUMBER = 4;
 
     private EllipseFactory() {
 

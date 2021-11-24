@@ -31,9 +31,6 @@ public class EllipseFileReader {
         } catch (IOException e) {
             throw new EllipseException("Error while reading file: " + filepath, e);
         }
-        if (fileLines.size() == 0) {
-            throw new EllipseException("File doesn't contain valid lines");
-        }
         logger.log(Level.INFO, "Lines received successfully");
         return fileLines;
     }
