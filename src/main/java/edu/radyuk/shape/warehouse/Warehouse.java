@@ -1,13 +1,17 @@
 package edu.radyuk.shape.warehouse;
 
 import edu.radyuk.shape.exception.EllipseException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Warehouse {
+    private static final Logger logger = LogManager.getLogger();
     private static final Warehouse instance = new Warehouse();
-    private Map<Integer, EllipseParameters> parametersStorage = new HashMap<Integer, EllipseParameters>();
+    private final Map<Integer, EllipseParameters> parametersStorage = new HashMap<Integer, EllipseParameters>();
 
     private Warehouse() {
 
@@ -20,6 +24,7 @@ public class Warehouse {
     public void putParameters(int id, double area, double perimeter) {
         EllipseParameters ellipseParameters = new EllipseParameters(area, perimeter);
         parametersStorage.putIfAbsent(id, ellipseParameters);
+        logger.log(Level.INFO, "Parameters added successfully");
     }
 
     public EllipseParameters receiveParameters(int id) throws EllipseException {
@@ -37,5 +42,6 @@ public class Warehouse {
         }
         ellipseParameters.setArea(area);
         ellipseParameters.setPerimeter(perimeter);
+        logger.log(Level.INFO, "Parameters updated successfully");
     }
 }

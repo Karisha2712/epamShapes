@@ -1,7 +1,6 @@
 package edu.radyuk.shape.validator.impl;
 
 import edu.radyuk.shape.entity.Point;
-import edu.radyuk.shape.validator.EllipseFileValidator;
 import edu.radyuk.shape.validator.EllipseParametersValidator;
 
 public class EllipseParametersValidatorImpl implements EllipseParametersValidator {

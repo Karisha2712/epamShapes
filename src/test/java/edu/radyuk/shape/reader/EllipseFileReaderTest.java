@@ -1,7 +1,7 @@
 package edu.radyuk.shape.reader;
 
-import org.junit.Test;
 import edu.radyuk.shape.exception.EllipseException;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;

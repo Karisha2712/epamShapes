@@ -1,7 +1,5 @@
 package edu.radyuk.shape.warehouse;
 
-import java.util.Objects;
-
 public class EllipseParameters {
     private double area;
     private double perimeter;
@@ -38,8 +36,8 @@ public class EllipseParameters {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(area);
-        result = 31 * result + Objects.hash(perimeter);
+        int result = Double.hashCode(area);
+        result = 31 * result + Double.hashCode(perimeter);
         return result;
     }
 
