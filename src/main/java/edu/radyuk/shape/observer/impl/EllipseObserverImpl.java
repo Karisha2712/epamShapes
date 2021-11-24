@@ -2,6 +2,7 @@ package edu.radyuk.shape.observer.impl;
 
 import edu.radyuk.shape.entity.Ellipse;
 import edu.radyuk.shape.exception.EllipseException;
+import edu.radyuk.shape.observer.EllipseEvent;
 import edu.radyuk.shape.observer.EllipseObserver;
 import edu.radyuk.shape.service.impl.EllipseServiceImpl;
 import edu.radyuk.shape.warehouse.Warehouse;
@@ -13,7 +14,8 @@ public class EllipseObserverImpl implements EllipseObserver {
     private static final Logger logger = LogManager.getLogger();
 
     @Override
-    public void updateParameters(Ellipse ellipse) {
+    public void updateParameters(EllipseEvent event) {
+        Ellipse ellipse = event.getSource();
         int ellipseId = ellipse.getEllipseId();
         Warehouse warehouse = Warehouse.getInstance();
         EllipseServiceImpl ellipseService = new EllipseServiceImpl();

@@ -1,13 +1,20 @@
 package edu.radyuk.shape.entity;
 
 import edu.radyuk.shape.exception.EllipseException;
+import edu.radyuk.shape.observer.EllipseEvent;
+import edu.radyuk.shape.observer.EllipseObservable;
+import edu.radyuk.shape.observer.EllipseObserver;
 import edu.radyuk.shape.util.ShapeIdGenerator;
 import edu.radyuk.shape.validator.impl.EllipseParametersValidatorImpl;
 
-public class Ellipse {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Ellipse implements EllipseObservable {
     private final int ellipseId;
     private Point firstPoint;
     private Point secondPoint;
+    List<EllipseObserver> observers = new ArrayList<>();
 
     public Ellipse(Point firstPoint, Point secondPoint) throws EllipseException {
         EllipseParametersValidatorImpl ellipseParametersValidator = new EllipseParametersValidatorImpl();
@@ -33,10 +40,12 @@ public class Ellipse {
 
     public void setFirstPoint(Point firstPoint) {
         this.firstPoint = firstPoint;
+        notifyObservers();
     }
 
     public void setSecondPoint(Point secondPoint) {
         this.secondPoint = secondPoint;
+        notifyObservers();
     }
 
     @Override
@@ -63,5 +72,25 @@ public class Ellipse {
         sb.append(", secondPoint=").append(secondPoint);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public void attach(EllipseObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void detach(EllipseObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (EllipseObserver observer : observers) {
+            if (observer != null) {
+                EllipseEvent event = new EllipseEvent(this);
+                observer.updateParameters(event);
+            }
+        }
     }
 }

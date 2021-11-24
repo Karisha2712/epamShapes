@@ -44,4 +44,8 @@ public class Warehouse {
         ellipseParameters.setPerimeter(perimeter);
         logger.log(Level.INFO, "Parameters updated successfully");
     }
+
+    public boolean containsEllipse(int id) {
+        return parametersStorage.containsKey(id);
+    }
 }
