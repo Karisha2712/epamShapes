@@ -11,9 +11,9 @@ import java.util.List;
 
 
 public final class EllipseFactory {
+    private static final Logger logger = LogManager.getLogger();
     private static final EllipseFactory instance = new EllipseFactory();
     private static final int COORDINATES_NUMBER = 4;
-    private static final Logger logger = LogManager.getLogger();
 
     private EllipseFactory() {
 

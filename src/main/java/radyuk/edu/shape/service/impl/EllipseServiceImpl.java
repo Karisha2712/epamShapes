@@ -9,8 +9,8 @@ import radyuk.edu.shape.exception.EllipseException;
 import radyuk.edu.shape.service.EllipseService;
 
 public class EllipseServiceImpl implements EllipseService {
-    private static final String ERROR_MESSAGE = "Invalid ellipse";
     private static final Logger logger = LogManager.getLogger();
+    private static final String ERROR_MESSAGE = "Invalid ellipse";
 
     @Override
     public boolean isEllipse(Ellipse ellipse) throws EllipseException {

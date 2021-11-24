@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class EllipseLineParser {
+    private static final Logger logger = LogManager.getLogger();
     private static final String REGEXP_DELIMITER = "\\s+";
     private static final int COORDINATES_NUMBER = 4;
-    private static final Logger logger = LogManager.getLogger();
 
     public List<Double> parseEllipseLine(String ellipseLine) throws EllipseException {
         if (ellipseLine == null || ellipseLine.isEmpty()) {

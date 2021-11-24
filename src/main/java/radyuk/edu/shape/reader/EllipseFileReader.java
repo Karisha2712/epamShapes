@@ -18,7 +18,7 @@ import java.util.stream.Stream;
 public class EllipseFileReader {
     private static final Logger logger = LogManager.getLogger();
 
-    public List<String> getValidEllipseLines(String filepath) throws EllipseException {
+    public List<String> receiveValidEllipseLines(String filepath) throws EllipseException {
         if (!EllipseFileValidator.isFileValid(filepath)) {
             throw new EllipseException("Invalid file path");
         }
