@@ -12,7 +12,11 @@ import java.util.List;
 
 public class WarehouseFiller {
     private static final Logger logger = LogManager.getLogger();
-    private static final Warehouse warehouse = Warehouse.getInstance();
+    private final Warehouse warehouse = Warehouse.getInstance();
+
+    public WarehouseFiller() {
+
+    }
 
     public void fillWarehouse(List<Ellipse> ellipses) {
         EllipseServiceImpl ellipseService = new EllipseServiceImpl();
