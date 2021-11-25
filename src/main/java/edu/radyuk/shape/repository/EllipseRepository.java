@@ -1,0 +1,50 @@
+package edu.radyuk.shape.repository;
+
+import edu.radyuk.shape.entity.Ellipse;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class EllipseRepository {
+    private static final EllipseRepository instance = new EllipseRepository();
+    private final List<Ellipse> ellipseStorage;
+
+    private EllipseRepository() {
+        ellipseStorage = new ArrayList<>();
+    }
+
+    public static EllipseRepository getInstance() {
+        return instance;
+    }
+
+    public int size() {
+        return ellipseStorage.size();
+    }
+
+    public void add(Ellipse ellipse) {
+        ellipseStorage.add(ellipse);
+    }
+
+    public void set(int index, Ellipse ellipse) {
+        ellipseStorage.set(index, ellipse);
+    }
+
+    public void remove(Ellipse ellipse) {
+        ellipseStorage.remove(ellipse);
+    }
+
+    public void clear() {
+        ellipseStorage.clear();
+    }
+
+    public boolean isEmpty() {
+        return ellipseStorage.isEmpty();
+    }
+
+    public List<Ellipse> query(EllipseSpecification specification) {
+        return ellipseStorage.stream()
+                .filter(specification::specify)
+                .collect(Collectors.toList());
+    }
+}
