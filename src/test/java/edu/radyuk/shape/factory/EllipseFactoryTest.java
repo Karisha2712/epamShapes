@@ -1,21 +1,20 @@
 package edu.radyuk.shape.factory;
 
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
 import edu.radyuk.shape.entity.Ellipse;
 import edu.radyuk.shape.entity.Point;
 import edu.radyuk.shape.exception.EllipseException;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class EllipseFactoryTest {
     private static final EllipseFactory ellipseFactory = EllipseFactory.getInstance();
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void ifPointsCoordinatesAreCorrectReturnsEllipse() throws EllipseException {
@@ -29,13 +28,13 @@ public class EllipseFactoryTest {
     }
 
     @Test
-    public void ifEllipseExceptionThrown() throws EllipseException {
+    public void ifEllipseExceptionThrown() {
         List<Double> pointsCoordinates = new ArrayList<>();
         pointsCoordinates.add(10.0);
         pointsCoordinates.add(10.0);
         pointsCoordinates.add(14.0);
-        thrown.expect(EllipseException.class);
-        thrown.expectMessage("Invalid number of coordinates: " + pointsCoordinates);
-        ellipseFactory.getEllipse(pointsCoordinates);
+        var expectedException = assertThrows(EllipseException.class,
+                () -> ellipseFactory.getEllipse(pointsCoordinates));
+        assertEquals("Invalid number of coordinates: " + pointsCoordinates, expectedException.getMessage());
     }
 }
