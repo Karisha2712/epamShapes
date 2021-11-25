@@ -1,5 +1,7 @@
 package edu.radyuk.shape.repository;
 
+import edu.radyuk.shape.comparator.EllipseAreaComparator;
+import edu.radyuk.shape.comparator.EllipseComparator;
 import edu.radyuk.shape.entity.Ellipse;
 
 import java.util.ArrayList;
@@ -40,6 +42,22 @@ public class EllipseRepository {
 
     public boolean isEmpty() {
         return ellipseStorage.isEmpty();
+    }
+
+    public List<Ellipse> getEllipseStorage() {
+        return List.copyOf(ellipseStorage);
+    }
+
+    public List<Ellipse> sortByEllipseProperties(EllipseComparator comparator) {
+        return ellipseStorage.stream()
+                .sorted(comparator)
+                .collect(Collectors.toList());
+    }
+
+    public List<Ellipse> sortByArea() {
+        return ellipseStorage.stream()
+                .sorted(new EllipseAreaComparator())
+                .collect(Collectors.toList());
     }
 
     public List<Ellipse> query(EllipseSpecification specification) {
