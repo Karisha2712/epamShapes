@@ -3,8 +3,7 @@ package edu.radyuk.shape.repository.impl;
 import edu.radyuk.shape.entity.Ellipse;
 import edu.radyuk.shape.exception.EllipseException;
 import edu.radyuk.shape.repository.EllipseSpecification;
-import edu.radyuk.shape.warehouse.EllipseParameters;
-import edu.radyuk.shape.warehouse.Warehouse;
+import edu.radyuk.shape.service.impl.EllipseServiceImpl;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,13 +20,12 @@ public class EllipseAreaSpecification implements EllipseSpecification {
 
     @Override
     public boolean specify(Ellipse ellipse) {
-        Warehouse warehouse = Warehouse.getInstance();
         double area = 0;
         try {
-            EllipseParameters ellipseParameters = warehouse.receiveParameters(ellipse.getEllipseId());
-            area = ellipseParameters.getArea();
+            EllipseServiceImpl ellipseService = new EllipseServiceImpl();
+            area = ellipseService.calculateArea(ellipse);
         } catch (EllipseException e) {
-            logger.log(Level.ERROR, "There is no such ellipse in warehouse");
+            logger.log(Level.ERROR, e);
         }
         return (Double.compare(area, areaFrom) == 1 && Double.compare(area, areaTo) == -1);
     }
