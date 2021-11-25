@@ -3,6 +3,7 @@ package edu.radyuk.shape.repository;
 import edu.radyuk.shape.comparator.EllipseAreaComparator;
 import edu.radyuk.shape.comparator.EllipseComparator;
 import edu.radyuk.shape.entity.Ellipse;
+import edu.radyuk.shape.exception.EllipseException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,13 @@ public class EllipseRepository {
 
     public void set(int index, Ellipse ellipse) {
         ellipseStorage.set(index, ellipse);
+    }
+
+    public Ellipse get(int index) throws EllipseException {
+        if (index >= ellipseStorage.size()) {
+            throw new EllipseException("Invalid index");
+        }
+        return ellipseStorage.get(index);
     }
 
     public void remove(Ellipse ellipse) {
