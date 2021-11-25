@@ -14,6 +14,6 @@ public class EllipseIdRangeSpecification implements EllipseSpecification {
 
     @Override
     public boolean specify(Ellipse ellipse) {
-        return ((ellipse.getEllipseId() > idFrom) && (ellipse.getEllipseId() < idTo));
+        return ((ellipse.getEllipseId() >= idFrom) && (ellipse.getEllipseId() < idTo));
     }
 }

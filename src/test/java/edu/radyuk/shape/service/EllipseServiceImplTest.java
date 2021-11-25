@@ -13,8 +13,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class EllipseServiceImplTest {
-    private static final EllipseFactory ellipseFactory = EllipseFactory.getInstance();
-    private static final EllipseServiceImpl ellipseServiceImpl = new EllipseServiceImpl();
+    private final EllipseFactory ellipseFactory = EllipseFactory.getInstance();
+    private final EllipseServiceImpl ellipseServiceImpl = new EllipseServiceImpl();
+    private final String expectedMessage = "Invalid ellipse";
 
     @Test
     public void ifIsCircleReturnsTrue() throws EllipseException {
@@ -42,7 +43,7 @@ public class EllipseServiceImplTest {
     public void ifIsCircleThrowsNullException() {
         var expectedException = assertThrows(EllipseException.class,
                 () -> ellipseServiceImpl.isCircle(null));
-        assertEquals("Invalid ellipse", expectedException.getMessage());
+        assertEquals(expectedMessage, expectedException.getMessage());
     }
 
     @Test
@@ -71,7 +72,7 @@ public class EllipseServiceImplTest {
     public void ifIsEllipseThrowsNullException() {
         var expectedException = assertThrows(EllipseException.class,
                 () -> ellipseServiceImpl.isEllipse(null));
-        assertEquals("Invalid ellipse", expectedException.getMessage());
+        assertEquals(expectedMessage, expectedException.getMessage());
     }
 
     @Test
@@ -101,7 +102,7 @@ public class EllipseServiceImplTest {
     public void ifIsEllipseValidThrowsNullException() {
         var expectedException = assertThrows(EllipseException.class,
                 () -> ellipseServiceImpl.isEllipseValid(null));
-        assertEquals("Invalid ellipse", expectedException.getMessage());
+        assertEquals(expectedMessage, expectedException.getMessage());
     }
 
     @Test
@@ -119,7 +120,7 @@ public class EllipseServiceImplTest {
     public void ifCalculateAreaThrowsNullException() {
         var expectedException = assertThrows(EllipseException.class,
                 () -> ellipseServiceImpl.calculateArea(null));
-        assertEquals("Invalid ellipse", expectedException.getMessage());
+        assertEquals(expectedMessage, expectedException.getMessage());
     }
 
     @Test
@@ -137,7 +138,7 @@ public class EllipseServiceImplTest {
     public void ifCalculatePerimeterThrowsNullException() {
         var expectedException = assertThrows(EllipseException.class,
                 () -> ellipseServiceImpl.calculatePerimeter(null));
-        assertEquals("Invalid ellipse", expectedException.getMessage());
+        assertEquals(expectedMessage, expectedException.getMessage());
     }
 
 }

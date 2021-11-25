@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class EllipseFactoryTest {
-    private static final EllipseFactory ellipseFactory = EllipseFactory.getInstance();
+    private final EllipseFactory ellipseFactory = EllipseFactory.getInstance();
 
     @Test
     public void ifPointsCoordinatesAreCorrectReturnsEllipse() throws EllipseException {
@@ -24,7 +24,8 @@ public class EllipseFactoryTest {
         pointsCoordinates.add(14.0);
         pointsCoordinates.add(16.0);
         Ellipse ellipse = ellipseFactory.getEllipse(pointsCoordinates);
-        assertEquals(ellipse, new Ellipse(new Point(10.0, 10.0), new Point(14.0, 16.0)));
+        Ellipse expectedEllipse = new Ellipse(new Point(10.0, 10.0), new Point(14.0, 16.0));
+        assertEquals(expectedEllipse, ellipse);
     }
 
     @Test
@@ -33,8 +34,9 @@ public class EllipseFactoryTest {
         pointsCoordinates.add(10.0);
         pointsCoordinates.add(10.0);
         pointsCoordinates.add(14.0);
+        String expectedMessage = "Invalid number of coordinates: " + pointsCoordinates;
         var expectedException = assertThrows(EllipseException.class,
                 () -> ellipseFactory.getEllipse(pointsCoordinates));
-        assertEquals("Invalid number of coordinates: " + pointsCoordinates, expectedException.getMessage());
+        assertEquals(expectedMessage, expectedException.getMessage());
     }
 }

@@ -15,8 +15,10 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class EllipseObserverTest {
-    private static final Warehouse warehouse = Warehouse.getInstance();
+    private final Warehouse warehouse = Warehouse.getInstance();
     private static final EllipseObserverImpl observer = new EllipseObserverImpl();
     private static final EllipseFactory ellipseFactory = EllipseFactory.getInstance();
     private static Ellipse ellipse;
@@ -45,7 +47,7 @@ public class EllipseObserverTest {
         EllipseParameters newParameters = warehouse.receiveParameters(ellipse.getEllipseId());
         double newArea = newParameters.getArea();
         double newPerimeter = newParameters.getPerimeter();
-        Assertions.assertTrue((Double.compare(oldArea, newArea) != 0)
+        assertTrue((Double.compare(oldArea, newArea) != 0)
                 && (Double.compare(oldPerimeter, newPerimeter) != 0));
 
     }
