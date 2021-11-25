@@ -48,7 +48,7 @@ public class EllipseRepository {
         return List.copyOf(ellipseStorage);
     }
 
-    public List<Ellipse> sortByEllipseProperties(EllipseComparator comparator) {
+    public List<Ellipse> sort(EllipseComparator comparator) {
         return ellipseStorage.stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());

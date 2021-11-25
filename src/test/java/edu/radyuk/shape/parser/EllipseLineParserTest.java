@@ -1,10 +1,8 @@
 package edu.radyuk.shape.parser;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import edu.radyuk.shape.exception.EllipseException;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +21,6 @@ public class EllipseLineParserTest {
         DOUBLE_LIST.add(12.0);
         DOUBLE_LIST.add(14.0);
     }
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void ifParseEllipseLinesReturnsValidValues() throws EllipseException {
