@@ -20,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class EllipseRepositoryTest {
     private static final EllipseRepository repository = EllipseRepository.getInstance();
-    private static final EllipseObserverImpl observer = new EllipseObserverImpl();
-    private static final EllipseFactory ellipseFactory = EllipseFactory.getInstance();
     private static Ellipse ellipse1;
     private static Ellipse ellipse2;
 
     @BeforeAll
     static void setUp() throws EllipseException {
+        EllipseFactory ellipseFactory = EllipseFactory.getInstance();
+        EllipseObserverImpl observer = new EllipseObserverImpl();
         RepositoryFiller repositoryFiller = new RepositoryFiller();
         List<Double> pointsCoordinates = new ArrayList<>();
         pointsCoordinates.add(10.0);
