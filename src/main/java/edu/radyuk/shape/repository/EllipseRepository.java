@@ -1,6 +1,5 @@
 package edu.radyuk.shape.repository;
 
-import edu.radyuk.shape.comparator.EllipseAreaComparator;
 import edu.radyuk.shape.comparator.EllipseComparator;
 import edu.radyuk.shape.entity.Ellipse;
 import edu.radyuk.shape.exception.EllipseException;
@@ -59,12 +58,6 @@ public class EllipseRepository {
     public List<Ellipse> sort(EllipseComparator comparator) {
         return ellipseStorage.stream()
                 .sorted(comparator)
-                .collect(Collectors.toList());
-    }
-
-    public List<Ellipse> sortByArea() {
-        return ellipseStorage.stream()
-                .sorted(new EllipseAreaComparator())
                 .collect(Collectors.toList());
     }
 

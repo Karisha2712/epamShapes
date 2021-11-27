@@ -153,8 +153,9 @@ public class EllipseRepositoryTest {
 
     @Test
     public void ifSortByAreaIsCorrect() {
+        EllipseComparator comparator = EllipseComparator.AREA;
         repository.add(ellipse2);
-        List<Ellipse> actualEllipses = repository.sortByArea();
+        List<Ellipse> actualEllipses = repository.sort(comparator);
         List<Ellipse> expectedEllipses = new ArrayList<>();
         expectedEllipses.add(ellipse2);
         expectedEllipses.add(ellipse1);
