@@ -89,6 +89,17 @@ public class EllipseRepositoryTest {
     }
 
     @Test
+    public void ifSortByXCoordinateIsCorrect() {
+        EllipseComparator comparator = EllipseComparator.X_COORDINATE;
+        repository.add(ellipse2);
+        List<Ellipse> actualEllipses = repository.sort(comparator);
+        List<Ellipse> expectedEllipses = new ArrayList<>();
+        expectedEllipses.add(ellipse2);
+        expectedEllipses.add(ellipse1);
+        assertEquals(expectedEllipses, actualEllipses);
+    }
+
+    @Test
     public void ifQueryByIdSpecificationReturnsValidValues() {
         repository.add(ellipse2);
         EllipseSpecification specification = new EllipseIdRangeSpecification(1, 3);
